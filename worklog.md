@@ -67,3 +67,27 @@
 - Animation: `Variants` typed variants (stagger + fadeUp) with `whileInView`, `as const` ease tuple
 - No existing files modified
 - Zero new TypeScript errors
+
+---
+Task ID: 1
+Agent: main
+Task: Restore 3D wireframe cube in Hero (right side) + falling letters background (iahub360 style)
+
+Work Log:
+- Read current hero-section.tsx (centered text, no cube visible to user)
+- Read current animated-background.tsx (particles, grid, glow, centered cube in background)
+- Researched iahub360 matrix-bg.tsx from GitHub (canvas-based digital rain with katakana, digits, symbols)
+- Rewrote animated-background.tsx as canvas-based falling letters effect with emerald theme
+- Rewrote hero-section.tsx with two-column layout (text left, cube right on desktop; stacked on mobile)
+- Fixed TypeScript parsing error with module-level function component (inlined into export)
+- Fixed Next.js 16 viewport metadata warning (moved to separate viewport export)
+- Added allowedDevOrigins for preview panel cross-origin access
+- Removed unused colorMid variable
+- Lint passes clean
+
+Stage Summary:
+- animated-background.tsx: Canvas 2D digital rain with katakana+digits+symbols, emerald colors, 12% opacity, fixed viewport
+- hero-section.tsx: Two-column layout, 220x220 wireframe cube with glow on right, responsive (stacks on mobile)
+- Cube: 6-face CSS 3D wireframe, 30s rotation cycle, emerald-tinted borders, outer glow blur rings
+- Background: requestAnimationFrame loop, 3-tier brightness (white head, bright emerald, dim trail), stochastic reset
+- Fixes: viewport metadata export, allowedDevOrigins config
