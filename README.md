@@ -1,6 +1,6 @@
 <div align="center">
 
-# AtlasHub Digital – Corporate Website v2
+# AtlasHub Digital – Corporate Website v2.1
 
 **Building Digital Commerce Infrastructure**
 
@@ -41,6 +41,7 @@ O website foi concebido para:
 | Estado Cliente | Zustand | 5.x |
 | Formulários | React Hook Form + Zod | 7.x / 4.x |
 | Tema | next-themes | 0.4.x |
+| Tabelas | TanStack Table | 8.x |
 | Processamento | Bun | latest |
 | Deploy | Vercel | — |
 
@@ -53,16 +54,17 @@ src/
 ├── app/
 │   ├── api/
 │   │   ├── geoip/route.ts      # Detecção GeoIP → moeda + idioma
-│   │   └── contact/route.ts     # Formulário de contacto (Zod validated)
-│   ├── globals.css              # Tema dark premium, glassmorphism, animações
-│   ├── layout.tsx               # SEO metadata, JSON-LD, ThemeProvider
+│   │   ├── contact/route.ts     # Formulário de contacto (Zod validated)
+│   │   └── chat/route.ts        # AI Business Assistant (OpenRouter streaming)
+│   ├── globals.css              # Tema dark premium, glassmorphism, animações CSS
+│   ├── layout.tsx               # SEO metadata, JSON-LD, ThemeProvider, viewport
 │   └── page.tsx                 # Page assembly (SPA single-route)
 │
 ├── components/
 │   ├── atlashub/                # Componentes de negócio
-│   │   ├── animated-background.tsx  # Cubo 3D wireframe + partículas + grid
+│   │   ├── animated-background.tsx  # Canvas digital rain (katakana + símbolos caindo, tema emerald)
 │   │   ├── navbar.tsx               # Sticky glass navbar, i18n, scroll spy
-│   │   ├── hero-section.tsx         # Hero com CTA, animated background
+│   │   ├── hero-section.tsx         # Hero 2-colunas: texto (esq.) + cubo wireframe 3D (dir.)
 │   │   ├── solutions-section.tsx    # 5 solution cards (Commerce, Marketplace, AI, SaaS, Workflow)
 │   │   ├── workflow-section.tsx     # Animated pipeline (8 steps) + feature cards
 │   │   ├── products-section.tsx     # 8 products com filtro por categoria
@@ -71,7 +73,11 @@ src/
 │   │   ├── company-page.tsx         # Company modal (Mission, Vision, Values)
 │   │   ├── contact-section.tsx      # Formulário + info de contacto
 │   │   ├── legal-pages.tsx          # 9 legal page modals
-│   │   └── footer.tsx               # Footer 4 colunas + payment badges
+│   │   ├── developer-portal.tsx     # Developer Portal (modais, código, API docs)
+│   │   ├── status-center.tsx        # Status Center (uptime, componentes, histórico)
+│   │   ├── trust-center.tsx         # Trust Center (segurança, privacidade, compliance)
+│   │   ├── ai-chat.tsx              # AI Business Assistant (floating, streaming, markdown)
+│   │   └── footer.tsx               # Footer 4 colunas + payment badges + links novos
 │   └── ui/                      # shadcn/ui components (47 componentes)
 │
 ├── lib/
@@ -85,6 +91,7 @@ src/
 │   │       └── de.ts           # Deutsch (20+ chaves, fallback EN)
 │   ├── currency.ts             # Formatação e conversão de moedas
 │   ├── stripe.ts               # Arquitectura Stripe (ENV-based, sem credenciais)
+│   ├── motion.ts               # Framer Motion shared variants & easings
 │   └── utils.ts                # cn() utility (clsx + tailwind-merge)
 │
 ├── stores/
@@ -111,10 +118,23 @@ src/
 - **Custom scrollbar** estilizado
 - **Mobile-first** responsive design
 
-### Seções
+### Hero Section
+- **Layout 2 colunas** no desktop: texto à esquerda, cubo wireframe 3D à direita
+- **Cubo wireframe 3D** com 6 faces, rotação contínua (30s ciclo), glow emerald
+- **Responsivo**: no mobile, texto e cubo empilham verticalmente
+
+### Animated Background – Digital Rain
+- **Canvas 2D** com `requestAnimationFrame` (inspirado no iahub360)
+- **Caracteres**: Katakana japonês + dígitos (0-9) + hex (A-F) + símbolos (`<>/{}[];:`)
+- **3 camadas de brilho**: cabeça branca (5%), emerald brilhante (25%), trilha opaca (70%)
+- **Efeito trail**: overlay semi-transparente por frame para fade gradual
+- **Opacidade global**: 12% — textura subtil, não distrai do conteúdo
+- **Posição**: `fixed inset-0` — visível durante todo o scroll
+
+### Seções Principais
 | Secção | ID | Descrição |
 |---|---|---|
-| Hero | `#hero` | Headline, 3 CTAs, animated 3D background com cubo wireframe |
+| Hero | `#hero` | Headline, 3 CTAs, cubo 3D wireframe à direita, digital rain background |
 | Solutions | `#solutions` | 5 cards: Digital Commerce, Marketplace, AI, SaaS, Workflow |
 | Workflow | `#workflow` | Pipeline animado 8 steps (Customer → Analytics) + 4 feature cards |
 | Products | `#products` | 8 products, filtro por 7 categorias, preços dinâmicos |
@@ -122,7 +142,23 @@ src/
 | Trust | `#trust` | 6 indicadores: UK Company, Secure Payments, GDPR, SSL, Support, Global |
 | Company | `#company` | Modal com Mission, Vision, 4 Core Values, Business Activities |
 | Contact | `#contact` | Formulário validado + 5 canais de contacto + Maps placeholder |
-| Footer | — | 4 colunas, 9 legal links, 8 payment badges |
+| Footer | — | 4 colunas, 9 legal links, 8 payment badges, links para Developer/Status/Trust |
+
+### Páginas Modais (Phase 2.1)
+| Página | Trigger | Descrição |
+|---|---|---|
+| Developer Portal | Footer link | API docs, code examples, SDKs, "Coming Soon" |
+| Status Center | Footer link | Uptime 99.9%, 8 componentes, histórico de incidentes |
+| Trust Center | Footer link | Segurança, Privacidade, Compliance, Payments, Certificações |
+
+### AI Business Assistant
+- **Floating chat** disponível em todas as páginas
+- **Backend**: `/api/chat` com OpenRouter (streaming SSE)
+- **Modelo configurável** via `OPENROUTER_MODEL` (default: Google Gemini 2.0 Flash)
+- **System prompt** RAG-ready com dados da empresa, pricing e guidelines
+- **UI**: Respostas em Markdown, histórico de conversa, copiar mensagem, limpar chat
+- **Sugestões**: 4 perguntas pré-definidas para first interaction
+- **Sem API keys expostas**: toda a autenticação via server-side
 
 ### i18n – Internacionalização
 - **5 idiomas**: English, Português, Español, Français, Deutsch
@@ -159,6 +195,7 @@ src/
 - Robots directives
 - Semantic HTML (`<main>`, `<nav>`, `<section>`, `<header>`, `<footer>`)
 - ARIA labels e roles
+- Viewport export (Next.js 16 compliant)
 
 ### Stripe Integration (Arquitectura)
 - `src/lib/stripe.ts` – Service layer preparado
@@ -172,6 +209,7 @@ src/
 |---|---|---|
 | `/api/geoip` | GET | Detecta país via CF-IPCountry ou ip-api.com → retorna moeda + locale |
 | `/api/contact` | POST | Recebe formulário de contacto (validado com Zod) |
+| `/api/chat` | POST | AI Business Assistant – streaming via OpenRouter |
 
 ---
 
@@ -216,6 +254,13 @@ bun run lint     # ESLint check
 
 Copiar `.env.example` para `.env.local`. Todas as variáveis são opcionais para o funcionamento base do website.
 
+### Obrigatórias para AI Chat (quando activado)
+```env
+OPENROUTER_API_KEY=sk-or-...
+OPENROUTER_MODEL=google/gemini-2.0-flash-001
+OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
+```
+
 ### Obrigatórias para Stripe (quando activado)
 ```env
 STRIPE_SECRET_KEY=sk_live_...
@@ -230,6 +275,7 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 ```env
 NEXT_PUBLIC_SITE_URL=https://atlashub.digital
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_VERCEL_ANALYTICS=
 ```
 
 ---
@@ -243,6 +289,9 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 2. **Framework Preset**: Next.js (detectado automaticamente)
 
 3. **Environment Variables**: Adicionar no painel da Vercel:
+   - `OPENROUTER_API_KEY`
+   - `OPENROUTER_MODEL`
+   - `OPENROUTER_BASE_URL`
    - `STRIPE_SECRET_KEY`
    - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
    - `NEXT_PUBLIC_STRIPE_PRICE_STARTER`
@@ -262,10 +311,6 @@ Em Settings → Domains:
 - Adicionar `atlashub.digital`
 - Configurar DNS: CNAME `www.atlashub.digital` → `cname.vercel-dns.com`
 - Configurar DNS: A `atlashub.digital` → `76.76.21.21`
-
-### Vercel JSON (Opcional)
-
-O `next.config.ts` já está configurado para Vercel. Não é necessário `vercel.json` adicional.
 
 ---
 
@@ -324,6 +369,11 @@ interface AppState {
 1. Adicionar entrada em `src/lib/currency.ts` (currencies + countryToCurrency)
 2. Adicionar ao tipo `CurrencyCode` em `src/types/index.ts`
 
+### Activar AI Chat
+1. Obter API key em [openrouter.ai](https://openrouter.ai)
+2. Configurar `OPENROUTER_API_KEY` e `OPENROUTER_MODEL` no `.env.local`
+3. O modelo default é `google/gemini-2.0-flash-001` (gratuito)
+
 ### Activar Stripe
 1. Instalar: `bun add stripe`
 2. Configurar environment variables
@@ -332,7 +382,7 @@ interface AppState {
 
 ### Performance
 - Todas as animações usam `will-change` e `transform3d` para GPU acceleration
-- O background animado usa CSS puro (sem Canvas/WebGL)
+- O background digital rain usa Canvas 2D com `requestAnimationFrame` (performático)
 - Imagens optimizadas com Sharp (instalado)
 - Target: Lighthouse 100/100/100/100
 
@@ -342,6 +392,34 @@ interface AppState {
 - Navegação por teclado
 - Screen reader friendly (sr-only classes)
 - Contraste adequado em modo dark
+
+---
+
+## Changelog
+
+### v2.1.0
+- **Hero 2 colunas**: texto à esquerda + cubo wireframe 3D à direita (responsivo)
+- **Digital Rain background**: Canvas 2D com katakana, dígitos, símbolos (estilo iahub360)
+- **AI Business Assistant**: Floating chat com OpenRouter streaming, Markdown, histórico
+- **Developer Portal**: Modal com API docs e code examples (Coming Soon)
+- **Status Center**: Modal com uptime, componentes, histórico de incidentes
+- **Trust Center**: Modal com segurança, privacidade, compliance, pagamentos
+- **Footer actualizado**: links para Developer Portal, Status Center, Trust Center
+- **Viewport fix**: migrado para `export const viewport` (Next.js 16)
+- **Config**: `allowedDevOrigins` para preview panel cross-origin
+
+### v2.0.0
+- Next.js 16 + TypeScript 5 + Tailwind CSS 4 + shadcn/ui
+- Dark-first premium design com emerald accent
+- 9 seções: Hero, Solutions, Workflow, Products, Pricing, Trust, Company, Contact, Footer
+- i18n: 5 línguas (EN, PT, ES, FR, DE) com detecção automática
+- Conversão dinâmica de moeda (GBP, EUR, USD, BRL) via GeoIP
+- 9 páginas legais como modais profissionais
+- Arquitectura Stripe (ENV-based, sem credenciais hardcoded)
+- SEO: OpenGraph, Twitter Cards, JSON-LD Schema.org
+- Acessível: HTML semântico, ARIA, navegação por teclado
+- Animações Framer Motion em toda a página
+- Ready para Vercel deployment
 
 ---
 
@@ -355,7 +433,7 @@ Este repositório contém software proprietário. A reprodução, distribuição
 
 <div align="center">
 
-**© 2026 AtlasHub Digital Ltd**<br/>
+**© 2025 AtlasHub Digital Ltd**<br/>
 Building Digital Commerce Infrastructure
 
 </div>
