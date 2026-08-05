@@ -3,6 +3,7 @@
 import { useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Send, MessageCircle, Mail, Phone, MapPin } from 'lucide-react';
+import Image from 'next/image';
 import { t } from '@/lib/i18n';
 import { useAppStore, type AppPage } from '@/stores/app-store';
 import { smoothEase } from '@/lib/motion';
@@ -152,14 +153,21 @@ export function Footer() {
             <p className="text-[11px] text-muted-foreground/50">
               © {new Date().getFullYear()} AtlasHub Digital Ltd. {t('footer.rights', locale)}
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              {PAYMENT_ICONS.map(({ key, Icon }) => (
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {PAYMENT_ICONS.map(({ key, src, alt }) => (
                 <div
                   key={key}
                   className="rounded-md opacity-50 transition-opacity duration-300 hover:opacity-90"
                   title={key}
                 >
-                  <Icon />
+                  <Image
+                    src={src}
+                    alt={alt}
+                    width={48}
+                    height={30}
+                    className="h-6 w-auto rounded object-contain"
+                    unoptimized
+                  />
                 </div>
               ))}
             </div>

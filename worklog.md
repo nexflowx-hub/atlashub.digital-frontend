@@ -91,3 +91,29 @@ Stage Summary:
 - Cube: 6-face CSS 3D wireframe, 30s rotation cycle, emerald-tinted borders, outer glow blur rings
 - Background: requestAnimationFrame loop, 3-tier brightness (white head, bright emerald, dim trail), stochastic reset
 - Fixes: viewport metadata export, allowedDevOrigins config
+
+---
+Task ID: 1
+Agent: main
+Task: Replace Hero 3D animation with Three.js interactive 3x3x3 cube grid + Update payment logos with real uploaded images
+
+Work Log:
+- Installed three@0.185.1 and @types/three@0.185.4
+- Created hero-cube.tsx: Three.js WebGL 3x3x3 interactive cube grid
+  - 27 cubes (26 outer dark glass/metal + 1 core energy crystal)
+  - Core: OctahedronGeometry energy mesh, PointLight, glow sprite, wireframe containment
+  - Outer cubes: MeshPhysicalMaterial (emerald-tinted dark metal, clearcoat), EdgesGeometry with emerald lines
+  - Mouse parallax on window, raycaster hover interaction (cubes detach outward)
+  - Orbiting emerald/teal PointLights, wave pulsing, continuous rotation
+  - Proper cleanup of all geometries, materials, textures, renderer
+- Updated hero-section.tsx: Replaced HeroOrb canvas with HeroCube Three.js component (360x360 container)
+- Copied uploaded payment logos to public/: visa.svg, mastercard.svg, apple-pay.svg, bizum.svg, pix.svg, logo_mbway.png, logo_multibanco.png
+- Rewrote payment-icons.tsx: Array of {key, src, alt} objects using real image paths
+- Updated footer.tsx: Replaced SVG icon components with next/image Image tags
+- Fixed lint error: Replaced useState with useRef for WebGL error state
+
+Stage Summary:
+- Hero now features interactive Three.js 3x3x3 cube grid with emerald theme
+- Payment footer shows 7 real logos: Visa, Mastercard, Apple Pay, MB WAY, Multibanco, PIX, Bizum
+- All code passes lint cleanly, page compiles with 200 status
+

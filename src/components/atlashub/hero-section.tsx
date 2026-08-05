@@ -8,7 +8,7 @@ import { t } from '@/lib/i18n';
 import { useAppStore } from '@/stores/app-store';
 import { smoothEase } from '@/lib/motion';
 import { AnimatedBackground } from './animated-background';
-import { HeroOrb } from './hero-orb';
+import { HeroCube } from './hero-cube';
 
 const container = {
   hidden: { opacity: 0 },
@@ -91,13 +91,13 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Right – Resend-style 3D Icosahedron Orb */}
+        {/* Right – Three.js Interactive 3×3×3 Cube Grid */}
         <motion.div
           variants={fadeUp}
           className="flex flex-shrink-0 items-center justify-center"
-          style={{ width: 320, height: 320 }}
+          style={{ width: 360, height: 360 }}
         >
-          <HeroOrb />
+          <HeroCube />
         </motion.div>
       </motion.div>
 
