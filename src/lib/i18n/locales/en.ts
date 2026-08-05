@@ -297,6 +297,21 @@ const en = {
   'chat.suggest.2': 'Tell me about pricing plans',
   'chat.suggest.3': 'How does workflow automation work?',
   'chat.suggest.4': 'What marketplace integrations are available?',
+  // Social Media
+  'social.title': 'Social Media Growth',
+  'social.subtitle': 'Strategic social media management and growth services to amplify your brand presence and drive business results.',
+  'social.s1.title': 'Content Strategy',
+  'social.s1.desc': 'Data-driven content plans tailored to your audience, industry trends, and business objectives for maximum engagement.',
+  'social.s2.title': 'Community Management',
+  'social.s2.desc': 'Active engagement, reputation management, and community building across all major social platforms.',
+  'social.s3.title': 'Paid Advertising',
+  'social.s3.desc': 'Targeted ad campaigns with precision audience segmentation, A/B testing, and ROI-optimised budget allocation.',
+  'social.s4.title': 'Analytics & Reporting',
+  'social.s4.desc': 'Comprehensive performance dashboards with real-time metrics, competitor analysis, and actionable growth insights.',
+  'social.s5.title': 'Influencer Partnerships',
+  'social.s5.desc': 'Strategic influencer identification, outreach, and campaign management to extend your brand reach authentically.',
+  'social.s6.title': 'Brand Identity',
+  'social.s6.desc': 'Cohesive visual identity, tone of voice, and brand guidelines ensuring consistency across every platform.',
 } as const;
 
 export default en;

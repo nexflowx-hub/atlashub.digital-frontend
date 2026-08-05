@@ -9,6 +9,7 @@ import { WorkflowSection } from '@/components/atlashub/workflow-section';
 import { ProductsSection } from '@/components/atlashub/products-section';
 import { PricingSection } from '@/components/atlashub/pricing-section';
 import { TrustSection } from '@/components/atlashub/trust-section';
+import { SocialMediaSection } from '@/components/atlashub/social-media-section';
 import { CompanyPage } from '@/components/atlashub/company-page';
 import { ContactSection } from '@/components/atlashub/contact-section';
 import { Footer } from '@/components/atlashub/footer';
@@ -54,6 +55,7 @@ export default function Home() {
         <ProductsSection />
         <PricingSection />
         <TrustSection />
+        <SocialMediaSection />
         <CompanyPage />
         <ContactSection />
       </main>

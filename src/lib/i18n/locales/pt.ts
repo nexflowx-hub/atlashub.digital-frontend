@@ -184,6 +184,21 @@ const pt: Partial<Record<TranslationKey, string>> = {
   'common.viewAll': 'Ver Tudo',
   'common.backToTop': 'Voltar ao topo',
   'common.close': 'Fechar',
+  // Social Media
+  'social.title': 'Crescimento em Redes Sociais',
+  'social.subtitle': 'Gestão estratégica de redes sociais e serviços de crescimento para ampliar a presença da sua marca.',
+  'social.s1.title': 'Estratégia de Conteúdo',
+  'social.s1.desc': 'Planos de conteúdo baseados em dados, adaptados ao seu público e tendências da indústria.',
+  'social.s2.title': 'Gestão de Comunidade',
+  'social.s2.desc': 'Envolvimento ativo, gestão de reputação e construção de comunidade em todas as plataformas.',
+  'social.s3.title': 'Publicidade Paga',
+  'social.s3.desc': 'Campanhas publicitárias segmentadas com otimização de ROI e testes A/B.',
+  'social.s4.title': 'Analytics e Relatórios',
+  'social.s4.desc': 'Dashboards de desempenho com métricas em tempo real e análise competitiva.',
+  'social.s5.title': 'Parcerias com Influencers',
+  'social.s5.desc': 'Identificação estratégica de influencers e gestão de campanhas autênticas.',
+  'social.s6.title': 'Identidade de Marca',
+  'social.s6.desc': 'Identidade visual coesa e diretrizes de marca para consistência em todas as plataformas.',
 };
 
 export default pt;
