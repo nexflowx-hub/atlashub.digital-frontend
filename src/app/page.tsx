@@ -12,6 +12,10 @@ import { CompanyPage } from '@/components/atlashub/company-page';
 import { ContactSection } from '@/components/atlashub/contact-section';
 import { Footer } from '@/components/atlashub/footer';
 import { LegalPages } from '@/components/atlashub/legal-pages';
+import { DeveloperPortal } from '@/components/atlashub/developer-portal';
+import { StatusCenter } from '@/components/atlashub/status-center';
+import { TrustCenter } from '@/components/atlashub/trust-center';
+import { AiChat } from '@/components/atlashub/ai-chat';
 import { useAppStore, initializeApp } from '@/stores/app-store';
 import type { Locale, CurrencyCode } from '@/types';
 
@@ -21,12 +25,9 @@ export default function Home() {
 
   useEffect(() => {
     async function init() {
-      // Start with browser-based detection
       const initial = initializeApp();
       let locale: Locale = initial.locale;
       let currency: CurrencyCode = initial.currency;
-
-      // Try GeoIP for more accurate currency
       try {
         const res = await fetch('/api/geoip');
         if (res.ok) {
@@ -34,10 +35,7 @@ export default function Home() {
           if (data.currency) currency = data.currency;
           if (data.locale) locale = data.locale;
         }
-      } catch {
-        // Use browser-based detection as fallback
-      }
-
+      } catch { /* browser fallback */ }
       setLocale(locale);
       setCurrency(currency);
     }
@@ -57,7 +55,12 @@ export default function Home() {
         <CompanyPage />
         <ContactSection />
       </main>
-      <Footer />\n      <LegalPages />
+      <Footer />
+      <LegalPages />
+      <DeveloperPortal />
+      <StatusCenter />
+      <TrustCenter />
+      <AiChat />
     </div>
   );
 }
