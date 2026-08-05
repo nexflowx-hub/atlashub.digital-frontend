@@ -5,6 +5,8 @@ import { motion, useInView } from 'framer-motion';
 import { Rocket, Zap, Building2, Check } from 'lucide-react';
 import { t } from '@/lib/i18n';
 import { useAppStore } from '@/stores/app-store';
+import { smoothEase } from '@/lib/motion';
+import type { Locale } from '@/types';
 import { formatPrice } from '@/lib/currency';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -102,7 +104,7 @@ const headerFadeUp = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.5, ease: smoothEase },
   },
 };
 
@@ -111,7 +113,7 @@ const cardFadeUp = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.6, ease: smoothEase },
   },
 };
 
@@ -126,7 +128,7 @@ function AnimatedPrice({
 }: {
   priceGBP: number;
   currency: 'GBP' | 'EUR' | 'USD' | 'BRL';
-  locale: string;
+  locale: string; // used with `toLocaleString(locale)`
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
@@ -182,7 +184,7 @@ function PricingCard({
   currency,
 }: {
   tier: PricingTier;
-  locale: string;
+  locale: Locale;
   currency: 'GBP' | 'EUR' | 'USD' | 'BRL';
 }) {
   const Icon = tier.icon;

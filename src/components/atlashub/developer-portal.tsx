@@ -24,6 +24,8 @@ import {
 } from 'lucide-react';
 import { t } from '@/lib/i18n';
 import { useAppStore } from '@/stores/app-store';
+import { smoothEase } from '@/lib/motion';
+import type { Locale } from '@/types';
 import {
   Dialog,
   DialogContent,
@@ -182,7 +184,7 @@ const pageContainer = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.4, ease: smoothEase },
   },
   exit: {
     opacity: 0,
@@ -204,7 +206,7 @@ const cardFadeUp = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.45, ease: smoothEase },
   },
 };
 
@@ -267,7 +269,7 @@ function OverviewPage({
   locale,
   onNavigate,
 }: {
-  locale: string;
+  locale: Locale;
   onNavigate: (id: NavId) => void;
 }) {
   return (
@@ -340,7 +342,7 @@ function OverviewPage({
 /*  Page: Code Examples (REST APIs)                                     */
 /* ------------------------------------------------------------------ */
 
-function CodeExamplesPage({ locale }: { locale: string }) {
+function CodeExamplesPage({ locale }: { locale: Locale }) {
   return (
     <motion.div
       key="apis"
@@ -390,7 +392,7 @@ function CodeExamplesPage({ locale }: { locale: string }) {
 /*  Page: Architecture (Webhooks / Automation)                          */
 /* ------------------------------------------------------------------ */
 
-function ArchitecturePage({ locale }: { locale: string }) {
+function ArchitecturePage({ locale }: { locale: Locale }) {
   return (
     <motion.div
       key="architecture"
@@ -454,7 +456,7 @@ function ArchitecturePage({ locale }: { locale: string }) {
 /*  Page: Coming Soon                                                   */
 /* ------------------------------------------------------------------ */
 
-function ComingSoonPage({ locale, featureName }: { locale: string; featureName: string }) {
+function ComingSoonPage({ locale, featureName }: { locale: Locale; featureName: string }) {
   return (
     <motion.div
       key={featureName}
@@ -582,7 +584,7 @@ function MainContent({
   onNavigate,
 }: {
   activeNav: NavId;
-  locale: string;
+  locale: Locale;
   onNavigate: (id: NavId) => void;
 }) {
   const renderPage = () => {

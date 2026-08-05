@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { t } from '@/lib/i18n';
 import { useAppStore } from '@/stores/app-store';
+import { smoothEase } from '@/lib/motion';
 import {
   Dialog,
   DialogContent,
@@ -57,7 +58,7 @@ const fadeUp: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    transition: { duration: 0.45, ease: smoothEase },
   },
 };
 

@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { t } from '@/lib/i18n';
 import { useAppStore } from '@/stores/app-store';
+import { smoothEase } from '@/lib/motion';
 import {
   Dialog, DialogContent, DialogHeader, DialogTitle,
 } from '@/components/ui/dialog';
@@ -16,7 +17,7 @@ import type { LucideIcon } from 'lucide-react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: smoothEase } },
 };
 
 const container = {

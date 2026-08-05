@@ -17,22 +17,21 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "AtlasHub Digital – Building Digital Commerce Infrastructure",
   description:
-    "AtlasHub Digital Ltd develops SaaS platforms, AI-powered applications, workflow automation, marketplace integrations and digital commerce solutions for businesses worldwide.",
+    "AtlasHub Digital – UK technology company building SaaS platforms, AI solutions, workflow automation, marketplace integration & payment infrastructure for digital commerce.",
   keywords: [
     "AtlasHub Digital",
     "digital commerce",
-    "SaaS development",
+    "SaaS",
     "AI solutions",
+    "UK technology company",
     "workflow automation",
     "marketplace integration",
-    "e-commerce infrastructure",
-    "UK technology company",
     "payment infrastructure",
-    "cloud solutions",
   ],
-  authors: [{ name: "AtlasHub Digital Ltd" }],
+  authors: [{ name: "AtlasHub Digital Ltd", url: "https://atlashub.digital" }],
   creator: "AtlasHub Digital Ltd",
   publisher: "AtlasHub Digital Ltd",
+  category: "technology",
   metadataBase: new URL("https://atlashub.digital"),
   alternates: {
     canonical: "/",
@@ -40,17 +39,25 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AtlasHub Digital – Building Digital Commerce Infrastructure",
     description:
-      "SaaS platforms, AI-powered applications, workflow automation, and digital commerce solutions for businesses worldwide.",
+      "UK technology company building SaaS platforms, AI solutions, workflow automation, marketplace integration & payment infrastructure for digital commerce.",
     url: "https://atlashub.digital",
     siteName: "AtlasHub Digital",
     locale: "en_GB",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "AtlasHub Digital – Building Digital Commerce Infrastructure",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "AtlasHub Digital – Building Digital Commerce Infrastructure",
     description:
-      "SaaS platforms, AI-powered applications, workflow automation, and digital commerce solutions.",
+      "UK technology company building SaaS platforms, AI solutions, workflow automation, marketplace integration & payment infrastructure for digital commerce.",
   },
   robots: {
     index: true,
@@ -62,6 +69,14 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  formatDetection: {
+    telephone: false,
   },
 };
 

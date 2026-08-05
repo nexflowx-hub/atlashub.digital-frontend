@@ -249,3 +249,37 @@
 .animate-fade-in {
   animation: fade-in 0.5s ease-out forwards;
 }
+
+/* Mobile touch optimization */
+@media (pointer: coarse) {
+  button, [role="button"], a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Prevent text overflow on mobile */
+.overflow-wrap {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Safe area insets for notched phones */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .fixed, [style*="position: fixed"] {
+    left: max(env(safe-area-inset-left), 0px);
+    right: max(env(safe-area-inset-right), 0px);
+    bottom: max(env(safe-area-inset-bottom), 0px);
+  }
+}
+
+/* Better mobile typography - prevent text size adjustment */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}

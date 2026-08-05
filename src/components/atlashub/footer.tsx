@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Send, MessageCircle } from 'lucide-react';
 import { t } from '@/lib/i18n';
 import { useAppStore, type AppPage } from '@/stores/app-store';
+import { smoothEase } from '@/lib/motion';
 import { Button } from '@/components/ui/button';
 
 interface FooterLink {
@@ -42,7 +43,7 @@ const PAYMENT_METHODS = ['Stripe', 'Visa', 'Mastercard', 'Amex', 'Apple Pay', 'G
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: smoothEase } },
 };
 
 export function Footer() {
