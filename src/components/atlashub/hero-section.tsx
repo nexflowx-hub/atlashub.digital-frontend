@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -8,6 +8,7 @@ import { t } from '@/lib/i18n';
 import { useAppStore } from '@/stores/app-store';
 import { smoothEase } from '@/lib/motion';
 import { AnimatedBackground } from './animated-background';
+import { HeroOrb } from './hero-orb';
 
 const container = {
   hidden: { opacity: 0 },
@@ -26,15 +27,6 @@ const fadeUp = {
   },
 };
 
-const CUBE_FACES = [
-  { className: 'border-emerald-400/20', transform: 'translateZ(110px)' },
-  { className: 'border-emerald-500/10', transform: 'translateZ(-110px) rotateY(180deg)' },
-  { className: 'border-emerald-400/15', transform: 'rotateY(90deg) translateZ(110px)' },
-  { className: 'border-emerald-400/15', transform: 'rotateY(-90deg) translateZ(110px)' },
-  { className: 'border-emerald-400/15', transform: 'rotateX(90deg) translateZ(110px)' },
-  { className: 'border-emerald-500/10', transform: 'rotateX(-90deg) translateZ(110px)' },
-] as const;
-
 export function HeroSection() {
   const locale = useAppStore((s) => s.locale);
 
@@ -43,18 +35,6 @@ export function HeroSection() {
   }, []);
 
   const headlineParts = t('hero.headline', locale).split('Digital');
-
-  const cubeFaces = useMemo(
-    () =>
-      CUBE_FACES.map((face, i) => (
-        <div
-          key={i}
-          className={`absolute inset-0 border ${face.className}`}
-          style={{ transform: face.transform }}
-        />
-      )),
-    [],
-  );
 
   return (
     <section
@@ -67,8 +47,9 @@ export function HeroSection() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-12 lg:flex-row lg:gap-16 lg:items-center"
+        className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-12 lg:flex-row lg:gap-20 lg:items-center"
       >
+        {/* Left – Text content */}
         <div className="flex max-w-2xl flex-1 flex-col items-center text-center lg:items-start lg:text-left">
           <motion.h1
             variants={fadeUp}
@@ -110,52 +91,13 @@ export function HeroSection() {
           </motion.div>
         </div>
 
+        {/* Right – Resend-style 3D Icosahedron Orb */}
         <motion.div
           variants={fadeUp}
           className="flex flex-shrink-0 items-center justify-center"
+          style={{ width: 320, height: 320 }}
         >
-          <div className="relative flex items-center justify-center">
-            <div
-              className="absolute rounded-full bg-emerald-500/5 blur-3xl"
-              style={{ width: 360, height: 360 }}
-            />
-            <div
-              className="absolute rounded-full bg-emerald-400/5 blur-2xl"
-              style={{ width: 260, height: 260 }}
-            />
-            <motion.div
-              className="relative"
-              style={{
-                width: 220,
-                height: 220,
-                perspective: 800,
-                willChange: 'transform',
-              }}
-              initial={{ opacity: 0, scale: 0.6 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.4, ease: smoothEase }}
-            >
-              <motion.div
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  transformStyle: 'preserve-3d',
-                  willChange: 'transform',
-                }}
-                animate={{
-                  rotateX: [0, 360],
-                  rotateY: [0, 360],
-                }}
-                transition={{
-                  duration: 30,
-                  repeat: Infinity,
-                  ease: 'linear',
-                }}
-              >
-                {cubeFaces}
-              </motion.div>
-            </motion.div>
-          </div>
+          <HeroOrb />
         </motion.div>
       </motion.div>
 

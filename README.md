@@ -64,10 +64,14 @@ src/
 │   ├── atlashub/                # Componentes de negócio
 │   │   ├── animated-background.tsx  # Canvas digital rain (katakana + símbolos caindo, tema emerald)
 │   │   ├── navbar.tsx               # Sticky glass navbar, i18n, scroll spy
-│   │   ├── hero-section.tsx         # Hero 2-colunas: texto (esq.) + cubo wireframe 3D (dir.)
+│   │   ├── hero-section.tsx         # Hero 2-colunas: texto (esq.) + 3D icosahedron orb (dir.)
+│   │   ├── hero-orb.tsx              # Canvas Resend-style icosahedron (12v, 30e, parallax, orbit)
+│   │   ├── tech-banner.tsx           # Infinite scroll marquee (20 tech logos, 2 rows)
+│   │   ├── product-images.tsx       # 8 unique SVG gradient patterns for product cards
+│   │   ├── payment-icons.tsx         # 8 SVG payment method icons (Stripe, Visa, etc.)
 │   │   ├── solutions-section.tsx    # 5 solution cards (Commerce, Marketplace, AI, SaaS, Workflow)
 │   │   ├── workflow-section.tsx     # Animated pipeline (8 steps) + feature cards
-│   │   ├── products-section.tsx     # 8 products com filtro por categoria
+│   │   ├── products-section.tsx     # 8 products com filtro + SVG visual headers
 │   │   ├── pricing-section.tsx      # 3 tiers com conversão de moeda
 │   │   ├── trust-section.tsx        # 6 trust indicators
 │   │   ├── company-page.tsx         # Company modal (Mission, Vision, Values)
@@ -396,6 +400,14 @@ interface AppState {
 ---
 
 ## Changelog
+
+### v2.2.0
+- **Hero 3D Icosahedron Orb**: Canvas 2D Resend-style animation – 12 vértices, 30 arestas, depth-based gradient, 24 orbit particles, mouse parallax, pulse effect
+- **Product Card Visuals**: SVG gradient headers com padrões únicos (grid, bars, nodes, circuits, flow, hex, chart, network) por produto
+- **Tech Banner Marquee**: Infinite scroll 2 filas (20 tecnologias) em direcções opostas – GitHub, Vercel, AWS, Stripe, OpenAI, Gemini, React, Next.js, TypeScript, etc.
+- **Footer Redesign**: Layout condensado 5-colunas, contactos compactos em linha, 8 payment SVG icons (Stripe, Visa, Mastercard, Amex, Apple Pay, Google Pay, PayPal, Wise)
+- **Payment Icons**: Componentes SVG dedicados com cores oficiais de cada marca
+- **Novos componentes**: `hero-orb.tsx`, `product-images.tsx`, `payment-icons.tsx`, `tech-banner.tsx`
 
 ### v2.1.0
 - **Hero 2 colunas**: texto à esquerda + cubo wireframe 3D à direita (responsivo)

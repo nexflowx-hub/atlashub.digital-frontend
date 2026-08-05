@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { Navbar } from '@/components/atlashub/navbar';
 import { HeroSection } from '@/components/atlashub/hero-section';
+import { TechBanner } from '@/components/atlashub/tech-banner';
 import { SolutionsSection } from '@/components/atlashub/solutions-section';
 import { WorkflowSection } from '@/components/atlashub/workflow-section';
 import { ProductsSection } from '@/components/atlashub/products-section';
@@ -47,6 +48,7 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         <HeroSection />
+        <TechBanner />
         <SolutionsSection />
         <WorkflowSection />
         <ProductsSection />
