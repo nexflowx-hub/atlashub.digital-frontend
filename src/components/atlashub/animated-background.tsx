@@ -19,8 +19,8 @@ export function AnimatedBackground() {
     if (!ctx) return;
 
     let animationId: number;
-    let columns: number;
-    let drops: number[];
+    let columns = 0;
+    let drops: number[] = [];
 
     const fontSize = 14;
     const chars =
