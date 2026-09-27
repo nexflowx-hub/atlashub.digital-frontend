@@ -1,0 +1,41 @@
+name: Repair Recharts Lockfile
+
+on:
+  push:
+    branches:
+      - chore/remove-duplicate-growth-components
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: chore/remove-duplicate-growth-components
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Add missing Recharts dependency
+        run: bun add recharts@^2.15.4
+
+      - name: Commit dependency and lockfile
+        shell: bash
+        run: |
+          if git diff --quiet -- package.json bun.lock; then
+            echo "No dependency changes required."
+            exit 0
+          fi
+          git config user.name "AtlasHub CI"
+          git config user.email "ci@atlashub.digital"
+          git add package.json bun.lock
+          git commit -m "fix(deps): add missing recharts dependency"
+          git push origin HEAD:chore/remove-duplicate-growth-components
