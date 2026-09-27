@@ -1,9 +1,10 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowRight, Compass, BarChart3 } from "lucide-react";
 import { GrowthCommandCenter } from "./growth-command-center";
 import { GrowthPrimaryCTA, GrowthSecondaryCTA } from "./growth-cta";
+import { smoothEase } from "@/lib/motion";
 
 /**
  * GrowthHero — full-viewport, two-column (desktop) / stacked (mobile).
@@ -13,21 +14,21 @@ import { GrowthPrimaryCTA, GrowthSecondaryCTA } from "./growth-cta";
 export function GrowthHero() {
   const reduce = useReducedMotion();
 
-  const leftVariants = {
+  const leftVariants: Variants = {
     hidden: { opacity: 0, y: reduce ? 0 : 22 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.7, ease: smoothEase },
     },
   };
-  const rightVariants = {
+  const rightVariants: Variants = {
     hidden: { opacity: 0, y: reduce ? 0 : 30, scale: reduce ? 1 : 0.97 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.8, delay: 0.15, ease: smoothEase },
     },
   };
 
