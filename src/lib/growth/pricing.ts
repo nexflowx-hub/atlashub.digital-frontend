@@ -49,7 +49,7 @@ export const growthPricing: GrowthPricingConfig = {
       cadence: "/ month",
       description: "Get your brand online with a solid social foundation.",
       accent: "mint",
-      cta: { label: "Get Started", href: "/growth/audit" },
+      cta: { label: "Get Started", href: "/growth/order?plan=start" },
       features: [
         { label: "Social media setup", included: true },
         { label: "8 content pieces / month", included: true },
@@ -66,7 +66,7 @@ export const growthPricing: GrowthPricingConfig = {
       cadence: "/ month",
       description: "Build momentum with strategy and lead capture.",
       accent: "teal",
-      cta: { label: "Choose Grow", href: "/growth/audit" },
+      cta: { label: "Choose Grow", href: "/growth/order?plan=grow" },
       features: [
         { label: "Content strategy", included: true },
         { label: "16 content pieces / month", included: true },
@@ -84,7 +84,7 @@ export const growthPricing: GrowthPricingConfig = {
       description: "Full-funnel growth with paid media and automation.",
       accent: "emerald",
       popular: true,
-      cta: { label: "Choose Scale", href: "/growth/audit" },
+      cta: { label: "Choose Scale", href: "/growth/order?plan=scale" },
       features: [
         { label: "Full content production", included: true },
         { label: "Paid media management", included: true },
@@ -101,7 +101,7 @@ export const growthPricing: GrowthPricingConfig = {
       cadence: "",
       description: "Tailored B2B and enterprise growth operations.",
       accent: "cyan",
-      cta: { label: "Talk to our team", href: "/growth/audit" },
+      cta: { label: "Talk to our team", href: "/growth/order?plan=custom" },
       features: [
         { label: "Custom strategy", included: true },
         { label: "Dedicated operation", included: true },
