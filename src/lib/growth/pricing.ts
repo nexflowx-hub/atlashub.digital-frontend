@@ -38,7 +38,7 @@ function buildPackage(
 export const growthPricing: GrowthPricingConfig = {
   whatsappHref:
     process.env.NEXT_PUBLIC_GROWTH_WHATSAPP_URL ??
-    "https://wa.me/?text=I%27d%20like%20to%20talk%20about%20AtlasHub%20Growth",
+    "https://wa.me/5562991903462?text=I%27d%20like%20to%20talk%20about%20AtlasHub%20Growth",
   auditHref: "/growth/audit",
   servicesHref: "/growth/services",
   packages: [
