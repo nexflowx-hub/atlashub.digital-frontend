@@ -1,5 +1,6 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { GrowthServices } from "@/components/growth/growth-services";
+import { GrowthSmmMarketplace } from "@/components/growth/growth-smm-marketplace";
 import { GrowthProcess } from "@/components/growth/growth-process";
 import { GrowthPackages } from "@/components/growth/growth-packages";
 import { GrowthFinalCTA } from "@/components/growth/growth-final-cta";
@@ -70,6 +71,7 @@ export default function ServicesPage() {
       </section>
 
       <GrowthServices />
+      <GrowthSmmMarketplace />
       <GrowthProcess />
       <GrowthPackages />
 
