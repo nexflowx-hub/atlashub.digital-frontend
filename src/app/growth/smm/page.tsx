@@ -28,8 +28,8 @@ function OfferCard({ offer }: { offer: PublicSmmOffer }) {
     offer.pricingModel === "per_unit_size" ? ` / ${offer.unitSize.toLocaleString("pt-BR")}` : "";
 
   const params = new URLSearchParams({
-    service: offer.publicName,
     offerId: offer.id,
+    offerName: offer.publicName,
   });
 
   return (
