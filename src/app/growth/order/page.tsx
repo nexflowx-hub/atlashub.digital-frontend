@@ -13,11 +13,15 @@ export default async function GrowthOrderPage({
   searchParams: Promise<{
     service?: string | string[];
     plan?: string | string[];
+    offerId?: string | string[];
+    offerName?: string | string[];
   }>;
 }) {
   const params = await searchParams;
   const service = Array.isArray(params.service) ? params.service[0] : params.service;
   const plan = Array.isArray(params.plan) ? params.plan[0] : params.plan;
+  const offerId = Array.isArray(params.offerId) ? params.offerId[0] : params.offerId;
+  const offerName = Array.isArray(params.offerName) ? params.offerName[0] : params.offerName;
 
   return (
     <section className="relative py-10 md:py-16">
@@ -53,7 +57,12 @@ export default async function GrowthOrderPage({
             </div>
           </div>
 
-          <GrowthOrderForm initialService={service} initialPlan={plan} />
+          <GrowthOrderForm
+            initialService={service}
+            initialPlan={plan}
+            liveOfferId={offerId}
+            liveOfferName={offerName}
+          />
         </div>
       </div>
     </section>

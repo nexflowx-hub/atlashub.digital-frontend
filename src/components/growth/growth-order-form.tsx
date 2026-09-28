@@ -18,15 +18,21 @@ function buildWhatsAppHref(message: string) {
 export function GrowthOrderForm({
   initialService,
   initialPlan,
+  liveOfferId,
+  liveOfferName,
 }: {
   initialService?: string;
   initialPlan?: string;
+  liveOfferId?: string;
+  liveOfferName?: string;
 }) {
-  const initialSelection = initialPlan
-    ? `plan:${initialPlan}`
-    : initialService
-      ? `service:${initialService}`
-      : "";
+  const initialSelection = liveOfferId
+    ? `live-offer:${liveOfferId}`
+    : initialPlan
+      ? `plan:${initialPlan}`
+      : initialService
+        ? `service:${initialService}`
+        : "";
 
   const [submitting, setSubmitting] = useState(false);
   const [selection, setSelection] = useState(initialSelection);
@@ -41,8 +47,14 @@ export function GrowthOrderForm({
         value: `service:${offer.id}`,
         label: offer.title,
       })),
+      ...(liveOfferId && liveOfferName
+        ? [{
+            value: `live-offer:${liveOfferId}`,
+            label: `SMM — ${liveOfferName}`,
+          }]
+        : []),
     ],
-    [],
+    [liveOfferId, liveOfferName],
   );
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -66,6 +78,7 @@ export function GrowthOrderForm({
       `Empresa/Marca: ${company}`,
       `Email: ${email}`,
       `Interesse: ${selectedLabel || "Quero orientação"}`,
+      liveOfferId ? `Atlas Offer ID: ${liveOfferId}` : "",
       social ? `Site/Perfil: ${social}` : "",
       goal ? `Objetivo: ${goal}` : "",
       notes ? `Notas: ${notes}` : "",

@@ -102,7 +102,17 @@ export function GrowthSmmMarketplace() {
         ))}
       </div>
 
-      <p className="mx-auto mt-7 max-w-3xl text-center text-xs leading-relaxed text-white/35">
+      <div className="mt-8 flex justify-center">
+        <Link
+          href="/growth/smm"
+          className="inline-flex min-h-11 items-center gap-2 rounded-full bg-emerald-400 px-5 text-sm font-semibold text-emerald-950 transition hover:bg-emerald-300"
+        >
+          Open live SMM Panel
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
+
+      <p className="mx-auto mt-5 max-w-3xl text-center text-xs leading-relaxed text-white/35">
         Delivery scope is confirmed before activation. Paid media spend, third-party platform costs,
         and custom integrations are quoted separately where applicable.
       </p>
