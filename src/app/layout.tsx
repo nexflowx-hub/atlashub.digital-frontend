@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
+import "./atlas-v3.css";
 import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = Geist({
@@ -15,17 +16,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AtlasHub Digital – Building Digital Commerce Infrastructure",
+  title: "AtlasHub — We Build the Augmented Enterprise",
   description:
-    "AtlasHub Digital – UK technology company building SaaS platforms, AI solutions, workflow automation, marketplace integration & payment infrastructure for digital commerce.",
+    "AtlasHub builds the Augmented Enterprise: people, intelligent systems, software and automation working together to transform real operations.",
   keywords: [
     "AtlasHub Digital",
-    "digital commerce",
-    "SaaS",
-    "AI solutions",
-    "UK technology company",
-    "workflow automation",
-    "marketplace integration",
+    "Augmented Enterprise",
+    "intelligent systems",
+    "AI agents",
+    "business automation",
+    "custom software",
+    "systems integration",
     "payment infrastructure",
   ],
   authors: [{ name: "AtlasHub Digital Ltd", url: "https://atlashub.digital" }],
@@ -37,9 +38,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "AtlasHub Digital – Building Digital Commerce Infrastructure",
+    title: "AtlasHub — We Build the Augmented Enterprise",
     description:
-      "UK technology company building SaaS platforms, AI solutions, workflow automation, marketplace integration & payment infrastructure for digital commerce.",
+      "People, intelligent systems, software and automation working together to help organisations move faster, work smarter and achieve more.",
     url: "https://atlashub.digital",
     siteName: "AtlasHub Digital",
     locale: "en_GB",
@@ -49,15 +50,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "AtlasHub Digital – Building Digital Commerce Infrastructure",
+        alt: "AtlasHub — We Build the Augmented Enterprise",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AtlasHub Digital – Building Digital Commerce Infrastructure",
+    title: "AtlasHub — We Build the Augmented Enterprise",
     description:
-      "UK technology company building SaaS platforms, AI solutions, workflow automation, marketplace integration & payment infrastructure for digital commerce.",
+      "People, intelligent systems, software and automation working together to help organisations move faster, work smarter and achieve more.",
   },
   robots: {
     index: true,
