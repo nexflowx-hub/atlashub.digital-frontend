@@ -26,8 +26,10 @@ const cases = [
 
 const industries = ['Retail & E-commerce','Professional Services','Financial Technology','Customer Operations','Education & Training','Automotive & Mobility'];
 
+const OFFICIAL_LOGO = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo_Oficial_AtlasHub-2tKNqT43mJDvSAa7Iw8JWTOFAhnmQx.jpeg';
+
 function LogoMark({className=''}) {
-  return <Image src="/logo.svg" alt="AtlasHub" width={64} height={64} className={className} priority />;
+  return <img src={OFFICIAL_LOGO} alt="AtlasHub" width={64} height={64} className={className} />;
 }
 
 function EnergyRing() {
